@@ -1,0 +1,13 @@
+{
+  "name": "三角洲行动同步器",
+  "icon": "icon.png",
+  "version": "0.1.0",
+  "description": "面向三角洲行动 Vela 手表版的战绩、特勤处与离线备份界面演示，支持多屏布局及演示备份导出。",
+  "author": "taskschd1145",
+  "website": "https://github.com/taskschd1145/deltaforce-watch-astrobox-plugin",
+  "entry": "deltaforce-sync.wasm",
+  "wasi_version": 3,
+  "api_level": 4,
+  "permissions": [],
+  "additional_files": ["LICENSE", "THIRD_PARTY_NOTICES.md", "licenses/AstroBox-Plugin-WIT-MIT.txt"]
+}
