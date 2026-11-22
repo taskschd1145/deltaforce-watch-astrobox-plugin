@@ -1,0 +1,112 @@
+// AstroBox 插件 API Level 4 的插件侧导出接口。
+//
+// 与 Level 2/3 的 `astrobox:psys-plugin` 相比，所有导出都是 `async func`，且不再
+// 返回 `future<T>`。这不是风格问题，是**语义要求**：
+//
+//  * 组件模型把 `async` 记在函数类型上，宿主据此判断一个 guest task 能不能阻塞。
+//    声明成普通 `func` 的导出在里面 await 任何宿主接口都会被 trap 掉
+//    （wasmtime: `Trap::CannotBlockSyncTask`）。
+//  * `on-load` 同理必须是 async——Level 2/3 的插件只能靠 `block_on` 在同步
+//    `on-load` 里凑合调宿主接口，Level 4 起可以直接 await。
+//  * 返回值直接就是结果类型，不再需要 `wit_future::new()` + `spawn` 那一套样板；
+//    guest 侧 spawn 出去的任务没人 drain 导致 dialog 不弹的老问题也随之消失。
+
+package astrobox:psys-plugin-v4;
+
+interface lifecycle {
+    // 插件加载完成后调用。可以直接 await 宿主接口。
+    on-load: async func();
+}
+
+interface event {
+
+    enum event-type {
+        plugin-message,
+        interconnect-message, // 需plugin执行host接口register-interconnect-recv才会收到
+        device-action,
+        provider-action,
+        deeplink-action,
+
+        transport-packet, // 需plugin执行host接口register-transport-recv才会收到
+        timer,
+    }
+
+    on-event: async func(event-type: event-type, event-payload: string) -> string;
+
+    use astrobox:psys-host-v4/ui.{event as ui-event};
+    // element是组件id，event是事件类型，event-payload是事件数据
+    on-ui-event: async func(event-id: string, event: ui-event, event-payload: string) -> string;
+
+    // 在页面需要时执行，传入组件id，通过调用host的ui.render(id,el)函数渲染
+    on-ui-render: async func(element-id: string);
+    on-card-render: async func(card-id: string);
+}
+
+// 插件侧的 HTTP 请求处理。只有目标世界是 `psys-world-v4-http` 时才需要实现。
+interface http {
+    use astrobox:psys-host-v4/http-server.{request, response};
+
+    // 收到一个请求。server-id 对应 `http-server.start` 返回的那个服务器，
+    // 一个插件可以同时开多个。
+    handle: async func(server-id: u32, request: request) -> response;
+}
+
+// 插件侧的资源安装处理。只有目标世界是 `psys-world-v4-resource-install`（或自己的世界导出了它）时才需要实现。
+//
+// 资源作者可以在 manifest 里写 `ext.pluginInstall`，指定由哪个插件接管「下载/安装」按钮：
+//
+//   "ext": { "pluginInstall": { "plugin": "my-plugin", "data": { ... } } }
+//
+// 用户点按钮时，宿主不再走常规下载，而是调用目标插件的 `on-install`，把资源、目标设备和
+// 作者写的 `data` 交给它。插件决定接下来怎么办（见 `install-outcome`）。
+// `data` 来自资源的 manifest，等于不可信输入：不要拿它去拼路径、拼命令。
+interface resource-install {
+    record install-request {
+        // 本次点击的唯一 id，只用于日志对账
+        request-id: string,
+        // 资源所在的源（OfficialV2 / 插件源 / …）与资源 id、名称
+        provider: string,
+        resource-id: string,
+        resource-name: string,
+        // 资源类型：quick_app / watchface / firmware / canopus / res_pack / abp / music
+        resource-type: string,
+        // 用户当前选中的下载项 key（设备代号），以及该项的版本信息
+        download-key: string,
+        version: string,
+        version-code: option<u32>,
+        // 要装到哪台设备（已连接设备的地址）
+        device-addr: string,
+        // 这次是不是在更新已装的版本
+        is-update: bool,
+        // `ext.pluginInstall.data` 的 JSON 文本，作者没写则是 `null`
+        data: string,
+    }
+
+    variant install-outcome {
+        // 插件已经把安装任务入队（`queue.enqueue-install`）或自己传完了。
+        // 宿主提示用户已开始安装，不再走常规下载。
+        queued,
+        // 需要用户先去插件页完成核销（兑换码、卡密、授权……）。字符串是给用户看的一句话，
+        // 可以留空。宿主会弹出这句话并跳到插件页；插件在返回前应该已经记下了这次请求，
+        // 页面渲染时好接着上下文走。
+        redeem(string),
+        // 这次不归插件管，宿主照常走普通下载。
+        pass,
+        // 失败，字符串是给用户看的原因。
+        failed(string),
+    }
+
+    // 插件可以在里面 await 宿主接口（弹窗、网络、入队……），但用户在界面上等着，
+    // 宿主给的时限是 3 分钟，超时按失败处理。
+    on-install: async func(request: install-request) -> install-outcome;
+}
+
+// 插件侧的 CanopusConnect 消息处理。只有目标世界是 `psys-world-v4-canopusconnect`
+// （或自己的世界导出了它）时才需要实现。
+interface canopusconnect {
+    use astrobox:psys-host-v4/canopusconnect.{payload};
+
+    // 收到 module 发来的一条消息。只有 `canopusconnect.listen` 过该模块才会收到；
+    // 同一插件的多条消息并发处理，不保证先发先到。
+    on-message: async func(device-addr: string, module: string, payload: payload);
+}

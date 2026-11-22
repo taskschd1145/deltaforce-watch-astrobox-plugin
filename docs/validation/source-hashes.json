@@ -1,0 +1,220 @@
+{
+  "phase": "post-validation raw-byte source identity",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 63,
+      "sha256": "b3b34d9cbaf47a79859fe34752463b2e11842d769fa71c356fb0d4d11a30a6dd"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 766,
+      "sha256": "ff8245521f5b8f0a7c07355bd18d35d22cf17b6c4cf49063bc1f9c8b72f697d3"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 254,
+      "sha256": "c990ef64294bb17b40964eb8f00a9d65e0d6d86504b7e1aff18f81480e596a98"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 11428,
+      "sha256": "3ee36480c2c71417ee43bd04f049027c7f894d05f9917870239baf8064bb0121"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 712,
+      "sha256": "02c624aef202cf3ad0398d6e28d69668f86be3d9891da989b632ffe6e61e163a"
+    },
+    {
+      "path": "examples/render_previews.rs",
+      "bytes": 1237,
+      "sha256": "f9d5d91dfbcab04ebfdab82bb9fa2915f0638f27fbb1dedf0d29930a26dbdb38"
+    },
+    {
+      "path": "examples/verify_backup.rs",
+      "bytes": 864,
+      "sha256": "1cfea00c91c36914d27daf7238f841606c9944d664479ad000b1db1d6f23369a"
+    },
+    {
+      "path": "icon.png",
+      "bytes": 2069,
+      "sha256": "21a9ea8cf39a23cf49c5573cd727d7f3d763a9bfa175a26cd78302c41d153316"
+    },
+    {
+      "path": "index.txt",
+      "bytes": 6,
+      "sha256": "5f4349d0a302d2fbab6d44bc6783efa24421d78ea7d21ee02e4de5c878185f79"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1090,
+      "sha256": "f1b2f001f8e952d2bfea087d884f7f1844eb4dd44b07ec9c8fb312afa268f660"
+    },
+    {
+      "path": "licenses/AstroBox-Plugin-WIT-MIT.txt",
+      "bytes": 1089,
+      "sha256": "3410296ca2850a220927b3e63988b41919526643a4595ef61d33d82b9e0cb9d5"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 553,
+      "sha256": "32ee1c869c4b09156e6703b79c155aa201fa6d73865e928de4e06ce5f3f48952"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5325,
+      "sha256": "66ea2946cb4ff9fddc754d3521177a6ed1ba27ed7b93452019968578b90765c9"
+    },
+    {
+      "path": "rust-toolchain.toml",
+      "bytes": 84,
+      "sha256": "0687760ceffc126b4b958eff6c79e4117c0495e074148194b0d01db8ea5c9826"
+    },
+    {
+      "path": "scripts/build_dist.py",
+      "bytes": 4485,
+      "sha256": "c9cdcf1bf7ae9b009c979863afcfebc5c54678f4d6083e0eb816449e4f282a58"
+    },
+    {
+      "path": "scripts/capture_previews.mjs",
+      "bytes": 4036,
+      "sha256": "57d2c1723827c75516b29af41c9f4b4ea20e33392d2c5fdadf0cd49e17b0b39e"
+    },
+    {
+      "path": "scripts/cargo.mjs",
+      "bytes": 1192,
+      "sha256": "c109e71b397f338254dd10c36f85591b3e7c1c9718e8673bb95f847694bbbedd"
+    },
+    {
+      "path": "scripts/cargo.ps1",
+      "bytes": 558,
+      "sha256": "1666c69881caaba5876e04097225587311825f86b3fcba2f7e4e568dcf8fddb3"
+    },
+    {
+      "path": "scripts/download-rust-bootstrap.mjs",
+      "bytes": 1010,
+      "sha256": "73b357c618379ddcc9a895fe4ff793d588615b0172d65eec8ee329a25320c706"
+    },
+    {
+      "path": "scripts/generate_icon.py",
+      "bytes": 1071,
+      "sha256": "b33ae8b317d7fe0d0833b4a1e241f5a85d3ca0335a4757cbc4ecfa7390442a92"
+    },
+    {
+      "path": "scripts/record_sources.py",
+      "bytes": 1019,
+      "sha256": "e1f000f042ec7915c32dca0da3c843d4cbf62df136389724648d33ee89aa72cb"
+    },
+    {
+      "path": "scripts/render_previews.py",
+      "bytes": 2370,
+      "sha256": "69ff86226195e0987be8344edf8048eeb44134b3a7801930f8f072eb62f23236"
+    },
+    {
+      "path": "scripts/run_tests.py",
+      "bytes": 1130,
+      "sha256": "1372b3a1fef0163e02d95695636c3573c36ee158333d567d6f537a89947f8c13"
+    },
+    {
+      "path": "src/contracts.rs",
+      "bytes": 4785,
+      "sha256": "c604bcc420cb25b3c5f94dfa22977144c13794002784990a2cf3f3b6e2bbdc0d"
+    },
+    {
+      "path": "src/demo.rs",
+      "bytes": 15848,
+      "sha256": "d530f0faa000e3738fa6ebc9c79b36f895be772f588efff6de2280d04d4cc412"
+    },
+    {
+      "path": "src/export.rs",
+      "bytes": 6559,
+      "sha256": "4d832af6f012e6b6858610a155608b13ec0fcf98a205ede2218771362e5a7a57"
+    },
+    {
+      "path": "src/lib.rs",
+      "bytes": 253,
+      "sha256": "341f34bd23f77f44c5ffa93ff716f56335ecf2f1d4e1a24a10d976e57f4ac664"
+    },
+    {
+      "path": "src/runtime.rs",
+      "bytes": 16363,
+      "sha256": "cb3c26a6b887772e18bbd5fbaf414cf9d7f68c572b9e13d77a1a59ed0d6e7be8"
+    },
+    {
+      "path": "src/state.rs",
+      "bytes": 21066,
+      "sha256": "7c5a676371e6d6cb2103db9404beaffb3208455b8a795113cd21dfe28933d2e6"
+    },
+    {
+      "path": "src/store.rs",
+      "bytes": 22164,
+      "sha256": "1de99e1fd93f2fc4c45940a5f571677fe6e70db33b5160164f759ea020a943a4"
+    },
+    {
+      "path": "src/ui.rs",
+      "bytes": 48965,
+      "sha256": "7e8ae9b1ba5ca8ad3ecc527e8c62dfac0f0d519d0ce2c72d67b8c9dd911e01e2"
+    },
+    {
+      "path": "src/view.rs",
+      "bytes": 4790,
+      "sha256": "64f44d5e56a7a00e3066375cef01945c7b5de03c854cc7f507ef425fb718235e"
+    },
+    {
+      "path": "tests/core.rs",
+      "bytes": 25863,
+      "sha256": "0d5dc71f5ce0b28d4126b5a37bc3499a67538b7c1be8e83c7dfdd04ac2a4840f"
+    },
+    {
+      "path": "tests/native_layout.rs",
+      "bytes": 2224,
+      "sha256": "41173d2cb5c274d3d40c8ea31ecfb2760240aa1084dfbaffc48e9dbc3fa3b7e4"
+    },
+    {
+      "path": "tests/ui.rs",
+      "bytes": 32773,
+      "sha256": "3b1b40a858d2e4299eeffc5fc430a4d2ac9fbbbe8f98380df396a26ffb8d1055"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 1796,
+      "sha256": "f695377e1a77f7d117195920f998935cd357add24c924aa373a70d43a8dabac5"
+    },
+    {
+      "path": "wit/deps/astrobox-psys-host-v4.wit",
+      "bytes": 28886,
+      "sha256": "94b4d56d1943791a85d465a4fbd4b7fc08e4cb88665c4a2d54e1ca7eb66c1d13"
+    },
+    {
+      "path": "wit/deps/astrobox-psys-host.wit",
+      "bytes": 13445,
+      "sha256": "af07881d63e2a74cb132d6058fe20922d9c6293967970780927d4b43013151dc"
+    },
+    {
+      "path": "wit/deps/astrobox-psys-plugin-v4.wit",
+      "bytes": 5444,
+      "sha256": "9eb1d118886dd1a2288f9c69e8ebf08f1bbcc16f456a58ccc143f502547f7784"
+    },
+    {
+      "path": "wit/deps/astrobox-psys-plugin.wit",
+      "bytes": 1679,
+      "sha256": "f17bf6f0337cc9ffd5296e91a2d70bab472a8c89eeeacf84e16ddc55878a9a87"
+    },
+    {
+      "path": "wit/LICENSE",
+      "bytes": 1089,
+      "sha256": "3410296ca2850a220927b3e63988b41919526643a4595ef61d33d82b9e0cb9d5"
+    },
+    {
+      "path": "wit/main.wit",
+      "bytes": 5110,
+      "sha256": "01c796ac8596dd3f6e136e762bf2f2069cdbc4ef2db429d2e4314866df5558c3"
+    },
+    {
+      "path": "wit/PROVENANCE.md",
+      "bytes": 551,
+      "sha256": "bb57cfc3a38b8a7c9c6f542dab33ee9c231c0ffd1068260561af2d1be4b8fcd0"
+    }
+  ]
+}
