@@ -1,0 +1,7 @@
+{
+  "command": "node scripts/cargo.mjs test --locked --all-targets",
+  "exitCode": 0,
+  "passed": 55,
+  "failed": 0,
+  "suites": 6
+}
